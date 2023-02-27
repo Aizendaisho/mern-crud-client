@@ -1,6 +1,6 @@
 import axios from "axios";
 
 export const axiosPost = axios.create({
-  baseURL: "http://localhost:4000",
+  baseURL: "https://mern-crud-imagen-server-production.up.railway.app",
 });
 
