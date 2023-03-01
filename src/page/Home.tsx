@@ -45,7 +45,9 @@ export default function Home() {
   };
   return (
     <div className="container">
-      <Link to="/addpost">Nuevo Post</Link>
+      <Link className="btn btn-success" to="/addpost">
+        Nuevo Post
+      </Link>
       <div className="grid grid-cols-4">
         {data?.map((post: Posts) => (
           <div key={post._id} className="targeta">
