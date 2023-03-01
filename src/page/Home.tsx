@@ -18,7 +18,7 @@ export default function Home() {
 
   const { mutate: deletingPost } = deletePost();
 
-  const { data } = useApicall();
+  const { data, isLoading } = useApicall();
 
   const handlerDelete = (id: string, title: string) => {
     toast((t) => (
@@ -43,12 +43,17 @@ export default function Home() {
       </div>
     ));
   };
+
+  if (isLoading) {
+    return <h1>Cargando...</h1>;
+  }
+
   return (
     <div className="container mx-auto">
       <Link className="btn " to="/addpost">
         Nuevo Post
       </Link>
-      <div className="grid grid-cols-4">
+      <div className="grid grid-cols-4 gap-4">
         {data?.map((post: Posts) => (
           <div key={post._id} className="targeta">
             <div className="card w-96 bg-base-100 shadow-xl">
@@ -58,7 +63,11 @@ export default function Home() {
               </div>
               <Link to={`/single/${post._id}`}>
                 <figure>
-                  <img src={post?.image?.url} alt={post.title} />
+                  <img
+                    className="  object-cover w-full object-top h-96"
+                    src={post?.image?.url}
+                    alt={post.title}
+                  />
                 </figure>
               </Link>
               <button

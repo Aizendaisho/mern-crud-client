@@ -74,23 +74,41 @@ export default function AddPosts() {
         enableReinitialize
       >
         {({ handleSubmit, setFieldValue }) => (
-          <Form onSubmit={handleSubmit}>
-            <Field className="input" name="title" placeholder="title" />
+          <Form
+            className=" flex flex-col items-center justify-center gap-10"
+            onSubmit={handleSubmit}
+          >
+            <Field
+              className="input "
+              component="input"
+              name="title"
+              placeholder="title"
+            />
 
-            <ErrorMessage name="title" />
+            <ErrorMessage
+              component={"p"}
+              className=" text-red-400"
+              name="title"
+            />
 
             <Field
-              className="input"
+              component="textarea"
+              className="textarea resize-none"
               name="description"
               placeholder="description"
             />
-            <ErrorMessage name="description" />
+            <ErrorMessage
+              name="description"
+              component={"p"}
+              className=" text-red-400"
+            />
             <label htmlFor="imagen">Subir imagen</label>
             <input
               onChange={(e: any) => setFieldValue("image", e.target.files[0])}
               name="imagen"
               id="imagen"
               type="file"
+              className="file-input"
             />
             <button disabled={isLoading} type="submit" className="btn">
               Guardar
