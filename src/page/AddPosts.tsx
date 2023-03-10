@@ -53,9 +53,9 @@ export default function AddPosts() {
   };
   const { mutate: addingPost, isLoading } = addPost();
   return (
-    <div>
-      <Link to="/">A Home</Link>
-      {id ? <h1>Actualizando post</h1> : <h1>Nuevo post</h1>}
+    <div className="container mx-auto">
+      <Link to="/" className="btn"> Home</Link>
+      {id ? <h1 className=" text-3xl">Actualizando post</h1> : <h1 className=" text-3xl">Nuevo post</h1>}
       <Formik
         validationSchema={Yup.object({
           title: Yup.string().required("title is required"),
